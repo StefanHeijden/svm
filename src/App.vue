@@ -96,63 +96,25 @@
         class="hidden-sm-and-down"
       />
       <v-spacer />
-      <v-btn icon>
-        <v-icon>mdi-cart</v-icon> <!--https://materialdesignicons.com/-->
-      </v-btn>
-      <v-btn
+      
+      <!--ShoppingCart-->
+      <v-btn 
         icon
-        large
+        @click="shop = !shop"
       >
-        <v-avatar
-          size="32px"
-          item
-        >
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/logos/logo.svg"
-            alt="Vuetify"
-          /></v-avatar>
+        <v-icon>mdi-cart</v-icon> <!--https://materialdesignicons.com/-->
+
+      <!--Account-->
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
+
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-btn
-                :href="source"
-                icon
-                large
-                target="_blank"
-                v-on="on"
-              >
-                <v-icon large>mdi-code-tags</v-icon>
-              </v-btn>
-            </template>
-            <span>Source</span>
-          </v-tooltip>
-          <v-tooltip right>
-            <template v-slot:activator="{ on }">
-              <v-btn
-                icon
-                large
-                href="https://codepen.io/johnjleider/pen/MNYLdL"
-                target="_blank"
-                v-on="on"
-              >
-                <v-icon large>mdi-codepen</v-icon>
-              </v-btn>
-            </template>
-            <span>Codepen</span>
-          </v-tooltip>
-        </v-row>
-      </v-container>
+      Stuff
     </v-content>
+    
     <v-btn
       bottom
       color="pink"
@@ -165,7 +127,7 @@
       <v-icon>mdi-plus</v-icon>
     </v-btn>
     <v-dialog
-      v-model="dialog"
+      v-model="shop"
       width="800px"
     >
       <v-card>
@@ -255,39 +217,16 @@
       source: String,
     },
     data: () => ({
-      dialog: false,
+      shop: false,
       drawer: null,
       items: [
-        { icon: 'mdi-contacts', text: 'Contacts' },
-        { icon: 'mdi-history', text: 'Frequently contacted' },
-        { icon: 'mdi-content-copy', text: 'Duplicates' },
-        {
-          icon: 'mdi-chevron-up',
-          'icon-alt': 'mdi-chevron-down',
-          text: 'Labels',
-          model: true,
-          children: [
-            { icon: 'mdi-plus', text: 'Create label' },
-          ],
-        },
-        {
-          icon: 'mdi-chevron-up',
-          'icon-alt': 'mdi-chevron-down',
-          text: 'More',
-          model: false,
-          children: [
-            { text: 'Import' },
-            { text: 'Export' },
-            { text: 'Print' },
-            { text: 'Undo changes' },
-            { text: 'Other contacts' },
-          ],
-        },
+        { icon: 'mdi-music-note', text: 'Music Packs'  },
+        { text: 'Liquid' },
+        { text: 'Neuro' },
+        { text: 'Dubstep' },
+        { text: 'Other' },
+        { icon: 'mdi-help-circle', text: 'Bruyere' },
         { icon: 'mdi-settings', text: 'Settings' },
-        { icon: 'mdi-message', text: 'Send feedback' },
-        { icon: 'mdi-help-circle', text: 'Help' },
-        { icon: 'mdi-cellphone-link', text: 'App downloads' },
-        { icon: 'mdi-keyboard', text: 'Go to the old version' },
       ],
     }),
   }
