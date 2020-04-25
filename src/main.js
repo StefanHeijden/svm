@@ -3,12 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import vuetify from './../plugins/vuetify' // path to vuetify export
-import router from './router'
 
 /* eslint-disable no-new */
 new Vue({
   vuetify,
-  router,
-  components: { App, vuetify },
+  components: { App, vuetify},
   template: '<App/>'
 }).$mount('#app')

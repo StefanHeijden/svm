@@ -110,22 +110,12 @@
         <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
-
-    <v-content>
-      Stuff
-    </v-content>
     
-    <v-btn
-      bottom
-      color="pink"
-      dark
-      fab
-      fixed
-      right
-      @click="dialog = !dialog"
-    >
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
+    <v-content>
+      <packs></packs>
+    </v-content>
+
+    <!--ShoppingCart Dialog -->
     <v-dialog
       v-model="shop"
       width="800px"
@@ -208,13 +198,19 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <!--ShoppingCart Dialog -->
   </v-app>
 </template>
 
 <script>
+import packs from './../src/components/Packs'
   export default {
     props: {
       source: String,
+    },
+    components: {
+      packs
     },
     data: () => ({
       shop: false,
