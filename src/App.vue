@@ -61,7 +61,7 @@
       </v-btn>
       <v-btn 
         icon
-        @click="account = !account"
+        @click="startlogin = !startlogin"
       >
         <v-icon>mdi-account</v-icon>
       </v-btn>
@@ -75,18 +75,19 @@
     <cart/>
     </v-dialog>
 
-    <!--Account Dialog -->
+    <!--Login Dialog -->
     <v-dialog
-      v-model="account"
+      v-model="startlogin"
       width="800px"
     >
-      <account v-on:stopdialog="account = !account" />
+      <login v-on:stopdialog="startlogin = !startlogin" v-on:logedin="page= 'account'" />
     </v-dialog>
     
     <!--Content-->
     <v-content>
       <packs v-if="page == 'packs'"></packs>
       <info v-if="page == 'info'"></info>
+      <account v-if="page == 'account'"/>
     </v-content>
   </v-app>
 </template>
@@ -96,6 +97,7 @@ import packs from './../src/components/Packs'
 import info from './../src/components/Info'
 import cart from './../src/components/Cart'
 import account from './../src/components/Account'
+import login from './../src/components/Login'
 
   export default {
     props: {
@@ -105,12 +107,18 @@ import account from './../src/components/Account'
       packs,
       info,
       cart,
-      account
+      account,
+      login
+    },
+    methods: {
+      loggingin: function(){
+      },
     },
     data: () => ({
       page: 'packs',
       shop: false,
-      account: false,
+      loggedin: false,
+      startlogin: false,
       drawer: null,
       items: [
         { icon: 'mdi-music-note', text: 'Music Packs', click: 'packs'  },
@@ -119,7 +127,6 @@ import account from './../src/components/Account'
         { text: 'Dubstep', click: 'dubstep' },
         { text: 'Other', click: 'other' },
         { icon: 'mdi-help-circle', text: 'Bruyere', click: 'info' },
-        { icon: 'mdi-settings', text: 'Settings' },
       ],
     }),
 }
