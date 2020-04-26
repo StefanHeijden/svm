@@ -50,14 +50,14 @@
       />
       <v-spacer />
       
-      <!--ShoppingCart-->
+      <!--ShoppingCart button-->
       <v-btn 
         icon
         @click="shop = !shop"
       >
         <v-icon>mdi-cart</v-icon> <!--https://materialdesignicons.com/-->
 
-      <!--Account-->
+      <!--Account button-->
       </v-btn>
       <v-btn 
         icon
@@ -67,12 +67,6 @@
       </v-btn>
     </v-app-bar>
     
-    <!--Packs-->
-    <v-content>
-      <packs v-if="page == 'packs'"></packs>
-      <info v-if="page == 'info'"></info>
-    </v-content>
-
     <!--ShoppingCart Dialog -->
     <v-dialog
       v-model="shop"
@@ -81,13 +75,19 @@
     <cart/>
     </v-dialog>
 
-    <!--ShoppingCart Dialog -->
+    <!--Account Dialog -->
     <v-dialog
       v-model="account"
       width="800px"
     >
-      <account></account>
+      <account v-on:stopdialog="account = !account" />
     </v-dialog>
+    
+    <!--Content-->
+    <v-content>
+      <packs v-if="page == 'packs'"></packs>
+      <info v-if="page == 'info'"></info>
+    </v-content>
   </v-app>
 </template>
 

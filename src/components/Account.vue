@@ -1,60 +1,48 @@
 <template>   
   <v-card>
     <v-card-title class="grey darken-2">
-      Create contact
+      Create account
     </v-card-title>
     <v-container>
       <v-row class="mx-2">
         <v-col
-          class="align-center justify-space-between"
           cols="12"
         >
-          <v-row
-            align="center"
-            class="mr-0"
-          >
-            <v-avatar
-              size="40px"
-              class="mx-3"
-            >
-              <img
-                src="//ssl.gstatic.com/s2/oz/images/sge/grey_silhouette.png"
-                alt=""
-              >
-            </v-avatar>
-            <v-text-field
-              placeholder="Name"
-            />
-          </v-row>
-        </v-col>
-        <v-col cols="6">
           <v-text-field
-            prepend-icon="mdi-account-card-details-outline"
-            placeholder="Company"
-          />
-        </v-col>
-        <v-col cols="6">
-          <v-text-field
-            placeholder="Job title"
+            v-model="name"
+            label="Name"
+            prepend-icon="mdi-account"
+            :rules="[rules.required]"
           />
         </v-col>
         <v-col cols="12">
           <v-text-field
+            v-model="password"
+            prepend-icon="mdi-key"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="[rules.required, rules.min]"
+            :type="show ? 'text' : 'password'"
+            name="input-10-1"
+            label="Password"
+            hint="At least 8 characters, 1 number and 1 sign."
+            counter
+            @click:append="show = !show"
+          ></v-text-field>
+        </v-col>
+        <v-col cols="12">
+          <v-text-field
+            v-model="email"
+            label="Email"
             prepend-icon="mdi-mail"
-            placeholder="Email"
+            :rules="[rules.required]"
           />
         </v-col>
         <v-col cols="12">
           <v-text-field
+            v-model="phone"
             type="tel"
             prepend-icon="mdi-phone"
             placeholder="(000) 000 - 0000"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            prepend-icon="mdi-text"
-            placeholder="Notes"
           />
         </v-col>
       </v-row>
@@ -63,27 +51,36 @@
       <v-btn
         text
         color="primary"
-      >More</v-btn>
-      <v-spacer />
-      <v-btn
-        text
-        color="primary"
-        @click="dialog = false"
+        @click="cancel()"
       >Cancel</v-btn>
       <v-btn
         text
-        @click="dialog = false"
-      >Save</v-btn>
+        @click="create()"
+      >Create</v-btn>
     </v-card-actions>
   </v-card>
+  </v-dialog>
 </template>  
 
 <script>
 export default {
   name: 'account',
+  methods: {
+    cancel: function(){this.$emit('stopdialog')
+    }
+  },
   data () {
     return {
-
+      go: false,
+      show: false,
+      name: '',
+      password: '',
+      email: '',
+      phone: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Min 8 characters',
+      },
     }
   }
 }
