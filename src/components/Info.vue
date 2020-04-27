@@ -1,49 +1,39 @@
 <template>
   <v-carousel
-      cycle
+      interval="4800"
       height="100%"
       hide-delimiter-background
       show-arrows-on-hover
     >
-      <v-carousel-item
-        v-for="(slide, i) in slides"
-        :key="i"
-      >
-        <v-sheet
-          :color="colors[i]"
-          height="100%"
-        >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <div class="display-3">{{ slide }} Info</div>
-          </v-row>
-        </v-sheet>
+    <!--First card-->
+      <v-carousel-item>
+        <infosheet/>
+      </v-carousel-item>
+    <!--Second card-->
+      <v-carousel-item>
+        <spsheet/>
+      </v-carousel-item>
+    <!--Third card-->
+      <v-carousel-item>
+        <toursheet/>
       </v-carousel-item>
     </v-carousel>
 </template>
 
 <script>
+import infosheet from './Info-Sheets/Info-Sheet'
+import spsheet from './Info-Sheets/SP-Sheet'
+import toursheet from './Info-Sheets/Tour-Sheet'
+
 export default {
   name: 'info',
+  components: {
+    infosheet,
+    spsheet,
+    toursheet
+  },
   data () {
     return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4',
-      ],
-      slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth',
-      ],
     }
   },
 }

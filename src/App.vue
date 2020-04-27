@@ -90,7 +90,9 @@
     >
       <login 
       v-on:stopdialog="startlogin = !startlogin" 
-      v-on:logedin="loggingin()" />
+      v-on:logedin="loggingin()" 
+      v-bind:accountname="accountname"
+      />
     </v-dialog>
     
     <!--Content-->
@@ -137,9 +139,6 @@ import login from './../src/components/Login'
           this.startlogin = true;
         }
       },
-      add: function(pack){
-        incart.push(pack);
-      }
     },
     data: () => ({
       page: 'packs',

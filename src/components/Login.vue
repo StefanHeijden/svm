@@ -60,11 +60,13 @@ import createaccount from './CreateAccount'
 
 export default {
   name: 'login',
+  props: ['accountname'],
   methods: {
     cancel: function(){
       this.$emit('stopdialog');
     },
     login: function(){
+      this.accountname = "Logged in";
       this.$emit('stopdialog');
       this.$emit('logedin');
     }

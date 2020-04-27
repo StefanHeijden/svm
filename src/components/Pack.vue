@@ -2,61 +2,49 @@
   <v-card
     outlined
     tile
+    width="500px"
   >
     <v-card-title class="grey darken-2">
           {{name}}
     </v-card-title>
     <v-container>
-      <v-row class="mx-2">
+      <v-row>
         <v-col
           class="align-center justify-space-between"
           cols="12"
         >
         {{description}}
         </v-col>
-        <v-col
-          class="align-center justify-space-between"
-          cols="4"
-        >
-          <v-chip
-            class="ma-2"
-            color="red"
-            text-color="white"
-          >
-            <v-avatar left>
-              <v-icon>mdi-label</v-icon>
-            </v-avatar>
-            {{type}}
-          </v-chip>
-        </v-col>
-        <v-col
-          class="align-center justify-space-between"
-          cols="6"
-        >
-          <v-chip
-            class="ma-2"
-            color="indigo"
-            text-color="white"
-          >
-            <v-avatar left>
-              <v-icon>mdi-currency-eur</v-icon>
-            </v-avatar>
-            {{price}}
-          </v-chip>
-        </v-col>
-        <v-col
-          class="align-center justify-space-between"
-          cols="2"
-        >
-        <v-btn v-if="!selected" icon color="red" @click="selected=addtocart() ">
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
-        <v-btn v-if="selected" icon color="red" @click="selected=removefromcart()">
-          <v-icon>mdi-checkbox-marked-circle</v-icon>
-        </v-btn>
-        </v-col>
       </v-row>
     </v-container>
+    <v-card-actions>
+      <v-chip
+        color="red"
+        text-color="white"
+      >
+        <v-avatar left>
+          <v-icon>mdi-label</v-icon>
+        </v-avatar>
+        {{type}}
+      </v-chip>
+      <v-spacer/>
+      <v-chip
+        color="indigo"
+        text-color="white"
+      >
+        <v-avatar left>
+          <v-icon>mdi-currency-eur</v-icon>
+        </v-avatar>
+        {{price}}
+      </v-chip>
+      <v-spacer/>
+      <v-btn v-if="!selected" icon color="red" @click="selected=addtocart() ">
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+      <v-btn v-if="selected" icon color="red" @click="selected=removefromcart()">
+        <v-icon>mdi-checkbox-marked-circle</v-icon>
+      </v-btn>
+    </v-card-actions>  
   </v-card>
 </template>
 
