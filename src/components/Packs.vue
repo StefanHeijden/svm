@@ -9,7 +9,7 @@
           style="height: 100px;"
         >
           <v-card
-            v-for="{name, description, type, price} in filter(title)"
+            v-for="{name, description, type, price} in filter(title, seachstring)"
             :key="name"
             class="ma-3 pa-6"
             outlined
@@ -53,18 +53,24 @@ export default {
   name: 'packs',
   props: ['title', 'seachstring'], 
   methods: {
-    filter: function(title){
+    filter: function(title, seachstring){
       var temp = [
         {name: 'pack1', description: 'dummy pack', type: 'liquid', price: '5.00', image: 'assets/logo.png'},
-        {name: 'pack2', description: 'dummy pack', type: 'neuro', price: '5.00', image: 'assets/logo.png'}, 
-        {name: 'pack3', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'},
-        {name: 'pack4', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'}
+        {name: 'pock2', description: 'dummy pack', type: 'neuro', price: '5.00', image: 'assets/logo.png'}, 
+        {name: 'pick3', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'},
+        {name: 'puck4', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'}
       ];
       var result = [];
       var n;
       for(n in temp){
         if(title=='packs' || title==temp[n].type){
-          result.push(temp[n]);
+          if(seachstring.length < 1){
+            result.push(temp[n]);
+          }else{
+            if(temp[n].name.includes(seachstring)){
+              result.push(temp[n]);
+            }
+          }
         }
       }
       return result;

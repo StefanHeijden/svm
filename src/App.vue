@@ -38,9 +38,10 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">Bruyere</span>
+        <span class="hidden-sm-and-down">Bruyere Music Production</span>
       </v-toolbar-title>
       <v-text-field
+        v-model="searched"
         flat
         solo-inverted
         hide-details
@@ -85,7 +86,7 @@
     
     <!--Content-->
     <v-content>
-      <packs v-if="page != 'info'" v-bind:title="page" ></packs>
+      <packs v-if="page != 'info'" v-bind:title="page" v-bind:seachstring="searched"></packs>
       <info v-if="page == 'info'"></info>
       <account v-if="page == 'account'"/>
     </v-content>
@@ -116,6 +117,7 @@ import login from './../src/components/Login'
     },
     data: () => ({
       page: 'packs',
+      searched: '',
       shop: false,
       loggedin: false,
       startlogin: false,
