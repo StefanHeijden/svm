@@ -62,11 +62,11 @@ export default {
   name: 'login',
   methods: {
     cancel: function(){
-      this.$emit('stopdialog')
+      this.$emit('stopdialog');
     },
     login: function(){
-      this.$emit('stopdialog')
-      this.$emit('logedin')
+      this.$emit('stopdialog');
+      this.$emit('logedin');
     }
   },
   components: {
