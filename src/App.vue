@@ -80,7 +80,6 @@
         v-bind:loggedin="loggedin"
         v-bind:accountname="accountname"
         v-on:gotologin="checkforlogin()"
-        @add="add"
       />
     </v-dialog>
 

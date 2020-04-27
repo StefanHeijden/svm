@@ -45,6 +45,17 @@
           <v-divider
             horizontal
           ></v-divider>
+
+          <v-row>
+          Total: 
+          <v-spacer></v-spacer>
+          <v-divider
+            class="mx-4"
+            vertical
+          ></v-divider>
+          {{this.totalprice()}}
+          </v-row>
+
         </v-col>
       </v-row>
     </v-container>
@@ -68,14 +79,9 @@
 </template>  
 
 <script>
-import login from './Login'
-
 export default {
   name: 'cart',
   props: ['incart', 'accountname', 'loggedin'],
-  components: {
-    login
-  },
   methods: {
     cancel: function(){
       this.$emit('stopdialog');
@@ -86,6 +92,13 @@ export default {
     },
     login: function(){
       this.$emit('gotologin');
+    },
+    totalprice: function(){
+      var total = 0;
+      for (var i = 0; i < this.incart.length; i++) {
+        total = total + this.incart[i].price;
+      }
+      return total;
     },
   },
   data () {

@@ -38,10 +38,10 @@ export default {
   methods: {
     filter: function(title, seachstring){
       var temp = [
-        {id: 0, name: 'pack1', description: 'dummy pack', type: 'liquid', price: '5.00', selected: 'false'},
-        {id: 1, name: 'pock2', description: 'dummy pack', type: 'neuro', price: '5.00', selected: 'false'}, 
-        {id: 2, name: 'pick3', description: 'dummy pack', type: 'dubstep', price: '15.00', selected: 'false'},
-        {id: 3, name: 'puck4', description: 'dummy pack', type: 'dubstep', price: '15.00', selected: 'false'}
+        {id: 0, name: 'pack1', description: 'dummy pack', type: 'liquid', price: 5.00, selected: 'false'},
+        {id: 1, name: 'pock2', description: 'dummy pack', type: 'neuro', price: 5.00, selected: 'false'}, 
+        {id: 2, name: 'pick3', description: 'dummy pack', type: 'dubstep', price: 15.00, selected: 'false'},
+        {id: 3, name: 'puck4', description: 'dummy pack', type: 'dubstep', price: 15.00, selected: 'false'}
       ];
       var result = [];
       var n;
