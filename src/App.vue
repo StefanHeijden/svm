@@ -62,7 +62,7 @@
       </v-btn>
       <v-btn 
         icon
-        @click="startlogin = !startlogin"
+        @click="checkforlogin()"
       >
         <v-icon>mdi-account</v-icon>
       </v-btn>
@@ -73,7 +73,7 @@
       v-model="shop"
       width="800px"
     >
-    <cart/>
+    <cart  v-on:stopdialog="shop = !shop" v-on:buy="page= 'account'"/>
     </v-dialog>
 
     <!--Login Dialog -->
@@ -81,7 +81,7 @@
       v-model="startlogin"
       width="800px"
     >
-      <login v-on:stopdialog="startlogin = !startlogin" v-on:logedin="page= 'account'" />
+      <login v-on:stopdialog="startlogin = !startlogin" v-on:logedin="loggingin()" />
     </v-dialog>
     
     <!--Content-->
@@ -91,7 +91,7 @@
         v-bind:title="page" 
         v-bind:seachstring="searched"/>
       <info v-if="page == 'info'"/>
-      <account v-if="page == 'account'"/>
+      <account v-if="page == 'account' && loggedin"/>
     </v-content>
   </v-app>
 </template>
@@ -116,6 +116,15 @@ import login from './../src/components/Login'
     },
     methods: {
       loggingin: function(){
+        this.loggedin = true;
+        this.page = "account";
+      },
+      checkforlogin: function(){
+        if(this.loggedin){
+          this.page = "account";
+        }else{
+          this.startlogin = true;
+        }
       },
     },
     data: () => ({

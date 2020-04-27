@@ -63,17 +63,12 @@
       <v-btn
         text
         color="primary"
-      >More</v-btn>
-      <v-spacer />
-      <v-btn
-        text
-        color="primary"
-        @click="dialog = false"
+        @click="cancel()"
       >Cancel</v-btn>
       <v-btn
         text
-        @click="dialog = false"
-      >Save</v-btn>
+        @click="buy()"
+      >Buy</v-btn>
     </v-card-actions>
   </v-card>
 </template>  
@@ -81,9 +76,18 @@
 <script>
 export default {
   name: 'cart',
+  methods: {
+    cancel: function(){
+      this.$emit('stopdialog');
+    },
+    buy: function(){
+      this.$emit('stopdialog');
+      this.$emit('buy');
+    }
+  },
   data () {
     return {
-
+      buy: false,
     }
   }
 }
