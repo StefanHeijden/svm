@@ -36,7 +36,7 @@
             v-model="email"
             label="Email"
             prepend-icon="mdi-mail"
-            :rules="[rules.required]"
+            :rules="[rules.required, rules.mail]"
           />
         </v-col>
         <!--Phone field-->
@@ -46,6 +46,7 @@
             type="tel"
             prepend-icon="mdi-phone"
             placeholder="(000) 000 - 0000"
+            :rules="[rules.phone]"
           />
         </v-col>
       </v-row>
@@ -72,6 +73,20 @@ export default {
     },
     create: function(){this.$emit('stopdialog')
     },
+    checknumber: function(value){
+      if(value.length < 1){
+        return true;
+      }
+      var numbers = /^[0-9]+$/;
+      if(value.value.match(numbers))
+      {
+      return true;
+      }
+      else
+      {
+      return false;
+      }
+    }
   },
   data () {
     return {
@@ -83,6 +98,8 @@ export default {
       rules: {
         required: value => !!value || 'Required.',
         min: v => v.length >= 8 || 'Min 8 characters',
+        mail: email => email.includes('@') || 'Must be valid email',
+        phone: phone => this.checknumber(phone) || 'Must be valid phonenumber',
       },
     }
   }

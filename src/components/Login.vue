@@ -2,7 +2,7 @@
   <!--Login Dialog-->
   <v-card>
     <v-card-title class="grey darken-2">
-      Create account
+      Log in
     </v-card-title>
     <v-container>
       <v-row class="mx-2">
