@@ -58,14 +58,24 @@
         text
         @click="buy()"
       >Buy</v-btn>
+      <v-btn
+        text
+        :disabled="loggedin"
+        @click="login()"
+      >Login</v-btn>
     </v-card-actions>
   </v-card>
 </template>  
 
 <script>
+import login from './Login'
+
 export default {
   name: 'cart',
-  props: ['incart', 'accountname'],
+  props: ['incart', 'accountname', 'loggedin'],
+  components: {
+    login
+  },
   methods: {
     cancel: function(){
       this.$emit('stopdialog');
@@ -73,10 +83,14 @@ export default {
     buy: function(){
       this.$emit('stopdialog');
       this.$emit('buy');
-    }
+    },
+    login: function(){
+      this.$emit('gotologin');
+    },
   },
   data () {
     return {
+      startlogin: false,
     }
   }
 }

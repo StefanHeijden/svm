@@ -28,6 +28,7 @@
 <script>
 export default {
   name: 'account',
+  props: ['accoutname'],
   data () {
     return {
       colors: [

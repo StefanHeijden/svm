@@ -30,7 +30,7 @@
     <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
       app
-      color="blue darken-3"
+      color="light-blue darken-4"
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -77,6 +77,9 @@
         v-on:stopdialog="shop = !shop" 
         v-on:buy="page= 'account'"
         v-bind:incart="incart"
+        v-bind:loggedin="loggedin"
+        v-bind:accountname="accountname"
+        v-on:gotologin="checkforlogin()"
         @add="add"
       />
     </v-dialog>
@@ -86,7 +89,9 @@
       v-model="startlogin"
       width="800px"
     >
-      <login v-on:stopdialog="startlogin = !startlogin" v-on:logedin="loggingin()" />
+      <login 
+      v-on:stopdialog="startlogin = !startlogin" 
+      v-on:logedin="loggingin()" />
     </v-dialog>
     
     <!--Content-->
@@ -142,6 +147,7 @@ import login from './../src/components/Login'
       searched: '',
       shop: false,
       loggedin: false,
+      accountname: '',
       startlogin: false,
       drawer: null,
       items: [
