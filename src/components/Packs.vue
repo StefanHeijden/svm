@@ -6,42 +6,41 @@
           :align="alignment"
           :justify="justify"
           class="grey lighten-5"
-          style="height: 300px;"
+          style="height: 100px;"
         >
           <v-card
-            v-for="n in 3"
-            :key="n"
+            v-for="{name, description, type, price} in filter(title)"
+            :key="name"
             class="ma-3 pa-6"
             outlined
             tile
           >
-            Column
+            <v-card-title class="grey darken-2">
+                  {{name}}
+            </v-card-title>
+            <v-container>
+              <v-row class="mx-2">
+                <v-col
+                  class="align-center justify-space-between"
+                  cols="12"
+                >
+                {{description}}
+                </v-col>
+                <v-col
+                  class="align-center justify-space-between"
+                  cols="12"
+                >
+                {{type}}
+                </v-col>
+                <v-col
+                  class="align-center justify-space-between"
+                  cols="12"
+                >
+                {{price}}
+                </v-col>
+              </v-row>
+            </v-container>
           </v-card>
-        </v-row>
-      </v-col>
-      <v-col cols="12">
-        <v-row justify="center">
-          <v-col
-            cols="6"
-            md="2"
-          >
-            <v-select
-              v-model="alignment"
-              :items="alignmentsAvailable"
-              label="Align"
-            ></v-select>
-          </v-col>
-
-          <v-col
-            cols="6"
-            md="2"
-          >
-            <v-select
-              v-model="justify"
-              :items="justifyAvailable"
-              label="Justify"
-            ></v-select>
-          </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -49,15 +48,30 @@
 </template>
 
 <script>
+let self = this;
 export default {
   name: 'packs',
+  props: ['title', 'seachstring'], 
+  methods: {
+    filter: function(title){
+      var temp = [
+        {name: 'pack1', description: 'dummy pack', type: 'liquid', price: '5.00', image: 'assets/logo.png'},
+        {name: 'pack2', description: 'dummy pack', type: 'neuro', price: '5.00', image: 'assets/logo.png'}, 
+        {name: 'pack3', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'},
+        {name: 'pack4', description: 'dummy pack', type: 'dubstep', price: '15.00', image: 'assets/logo.png'}
+      ];
+      var result = [];
+      var n;
+      for(n in temp){
+        if(title=='packs' || title==temp[n].type){
+          result.push(temp[n]);
+        }
+      }
+      return result;
+    },
+  },
   data () {
     return {
-      cards: [
-      {name: 'pack1', description: 'dummy pack', price: '5.00', image: 'assets/logo.png'},
-      {name: 'pack2', description: 'dummy pack', price: '5.00', image: 'assets/logo.png'}, 
-      {name: 'pack3', description: 'dummy pack', price: '15.00', image: 'assets/logo.png'}
-    ]
     }
   }
 }

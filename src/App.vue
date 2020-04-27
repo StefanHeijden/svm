@@ -85,7 +85,7 @@
     
     <!--Content-->
     <v-content>
-      <packs v-if="page == 'packs'"></packs>
+      <packs v-if="page != 'info'" v-bind:title="page" ></packs>
       <info v-if="page == 'info'"></info>
       <account v-if="page == 'account'"/>
     </v-content>
