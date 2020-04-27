@@ -6,7 +6,6 @@
     <v-container>
       <v-row class="mx-2">
         <v-col
-          class="align-center justify-space-between"
           cols="12"
         >
           <v-row
@@ -23,39 +22,29 @@
               >
             </v-avatar>
             <v-text-field
-              placeholder="Name"
+              v-model="accountname"
+              readonly
+              placeholder="Not logged in"
+              outlined
             />
           </v-row>
-        </v-col>
-        <v-col cols="6">
-          <v-text-field
-            prepend-icon="mdi-account-card-details-outline"
-            placeholder="Company"
-          />
-        </v-col>
-        <v-col cols="6">
-          <v-text-field
-            placeholder="Job title"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            prepend-icon="mdi-mail"
-            placeholder="Email"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            type="tel"
-            prepend-icon="mdi-phone"
-            placeholder="(000) 000 - 0000"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            prepend-icon="mdi-text"
-            placeholder="Notes"
-          />
+
+          <v-row
+            v-for="{name, price} in incart"
+            :key="name"
+            >
+          {{name}}
+          <v-spacer></v-spacer>
+          <v-divider
+            class="mx-4"
+            vertical
+          ></v-divider>
+          {{price}}
+          </v-row>
+
+          <v-divider
+            horizontal
+          ></v-divider>
         </v-col>
       </v-row>
     </v-container>
@@ -76,6 +65,7 @@
 <script>
 export default {
   name: 'cart',
+  props: ['incart', 'accountname'],
   methods: {
     cancel: function(){
       this.$emit('stopdialog');
@@ -87,7 +77,6 @@ export default {
   },
   data () {
     return {
-      buy: false,
     }
   }
 }

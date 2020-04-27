@@ -73,7 +73,12 @@
       v-model="shop"
       width="800px"
     >
-    <cart  v-on:stopdialog="shop = !shop" v-on:buy="page= 'account'"/>
+      <cart  
+        v-on:stopdialog="shop = !shop" 
+        v-on:buy="page= 'account'"
+        v-bind:incart="incart"
+        @add="add"
+      />
     </v-dialog>
 
     <!--Login Dialog -->
@@ -89,7 +94,9 @@
       <packs 
         v-if="page != 'info' && page != 'account'" 
         v-bind:title="page" 
-        v-bind:seachstring="searched"/>
+        v-bind:seachstring="searched"
+        v-bind:incart="incart"
+        />
       <info v-if="page == 'info'"/>
       <account v-if="page == 'account' && loggedin"/>
     </v-content>
@@ -126,6 +133,9 @@ import login from './../src/components/Login'
           this.startlogin = true;
         }
       },
+      add: function(pack){
+        incart.push(pack);
+      }
     },
     data: () => ({
       page: 'packs',
@@ -142,7 +152,8 @@ import login from './../src/components/Login'
         { text: 'Other', click: 'other' },
         { icon: 'mdi-help-circle', text: 'Bruyere', click: 'info' },
       ],
-      incart: [],
+      incart: [
+      ],
     }),
 }
 </script>

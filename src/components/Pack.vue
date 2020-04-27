@@ -48,10 +48,10 @@
           class="align-center justify-space-between"
           cols="2"
         >
-        <v-btn v-if="!selected" icon color="red" @click="selected=add(name); ">
+        <v-btn v-if="!selected" icon color="red" @click="selected=addtocart() ">
           <v-icon>mdi-plus</v-icon>
         </v-btn>
-        <v-btn v-if="selected" icon color="red" @click="selected=remove(name)">
+        <v-btn v-if="selected" icon color="red" @click="selected=removefromcart()">
           <v-icon>mdi-checkbox-marked-circle</v-icon>
         </v-btn>
         </v-col>
@@ -63,20 +63,19 @@
 <script>
 export default {
   name: 'pack',
-  props: ['name', 'description', 'type', 'price'],
+  props: ['id', 'name', 'description', 'type', 'price', 'selected'],
   methods: {
-    add: function(name){
-      this.$emit('add', name);
+    addtocart: function(){
+      this.$emit('addtocart');
       return true;
     },
-    remove: function(name){
-      this.$emit('remove', name);
+    removefromcart: function(){
+      this.$emit('removefromcart');
       return false;
     },
   },
   data () {
     return {
-      selected: false,
     }
   },
 }
