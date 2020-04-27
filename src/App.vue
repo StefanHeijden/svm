@@ -86,8 +86,11 @@
     
     <!--Content-->
     <v-content>
-      <packs v-if="page != 'info'" v-bind:title="page" v-bind:seachstring="searched"></packs>
-      <info v-if="page == 'info'"></info>
+      <packs 
+        v-if="page != 'info' && page != 'account'" 
+        v-bind:title="page" 
+        v-bind:seachstring="searched"/>
+      <info v-if="page == 'info'"/>
       <account v-if="page == 'account'"/>
     </v-content>
   </v-app>
@@ -130,6 +133,7 @@ import login from './../src/components/Login'
         { text: 'Other', click: 'other' },
         { icon: 'mdi-help-circle', text: 'Bruyere', click: 'info' },
       ],
+      incart: [],
     }),
 }
 </script>

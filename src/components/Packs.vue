@@ -6,7 +6,6 @@
           :align="alignment"
           :justify="justify"
           class="grey lighten-5"
-          style="height: 100px;"
         >
           <v-card
             v-for="{name, description, type, price} in filter(title, seachstring)"
@@ -28,15 +27,44 @@
                 </v-col>
                 <v-col
                   class="align-center justify-space-between"
-                  cols="12"
+                  cols="4"
                 >
-                {{type}}
+                 <v-chip
+                    class="ma-2"
+                    color="red"
+                    text-color="white"
+                  >
+                    <v-avatar left>
+                      <v-icon>mdi-label</v-icon>
+                    </v-avatar>
+                    {{type}}
+                  </v-chip>
                 </v-col>
                 <v-col
                   class="align-center justify-space-between"
-                  cols="12"
+                  cols="6"
                 >
-                {{price}}
+                  <v-chip
+                    class="ma-2"
+                    color="indigo"
+                    text-color="white"
+                  >
+                    <v-avatar left>
+                      <v-icon>mdi-currency-eur</v-icon>
+                    </v-avatar>
+                    {{price}}
+                  </v-chip>
+                </v-col>
+                <v-col
+                  class="align-center justify-space-between"
+                  cols="2"
+                >
+                <v-btn icon color="red" @click="add(name); ">
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+                <v-btn icon color="red" @click="add(name)">
+                  <v-icon>mdi-checkbox-marked-circle</v-icon>
+                </v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -74,6 +102,9 @@ export default {
         }
       }
       return result;
+    },
+    add: function(name){
+      this.$emit('add', name)
     },
   },
   data () {
