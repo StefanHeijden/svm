@@ -2,10 +2,10 @@
   <v-card
     outlined
     width="350px"
-    color="#385F73"
+    color="grey darken-3"
   >
-    <v-card-title class="grey darken-2">
-          {{name}}
+    <v-card-title class="display-1">
+      {{name}}
     </v-card-title>
     <v-container>
       <v-row>

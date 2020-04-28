@@ -5,9 +5,8 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
-      color="grey darken-4"
     >
-      <v-list color="grey darken-3" dense>
+      <v-list dense>
         <template v-for="item in items" >
           <v-list-item
             :key="item.text"
@@ -15,9 +14,9 @@
             @click="page = item.click "
           >
             <v-list-item-action>
-              <v-icon color="white" >{{ item.icon }}</v-icon>
+              <v-icon >{{ item.icon }}</v-icon>
             </v-list-item-action>
-            <div id="white" color="white">{{ item.text }}</div>
+            <div>{{ item.text }}</div>
           </v-list-item>
         </template>
       </v-list>
@@ -93,7 +92,7 @@
     </v-dialog>
     
     <!--Content-->
-    <v-content id="back">
+    <v-content>
       <packs 
         v-if="page != 'info' && page != 'account'" 
         v-bind:title="page" 
@@ -158,12 +157,3 @@ import login from './../src/components/Login'
     }),
 }
 </script>
-
-<style>
-#white {
-  color: white !important;
-}
-#back {
- background-color: black;
-}
-</style>
