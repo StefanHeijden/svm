@@ -1,8 +1,8 @@
 <template>
   <v-card
     outlined
-    tile
-    width="500px"
+    width="350px"
+    color="#385F73"
   >
     <v-card-title class="grey darken-2">
           {{name}}

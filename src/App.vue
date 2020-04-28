@@ -93,7 +93,7 @@
     </v-dialog>
     
     <!--Content-->
-    <v-content>
+    <v-content id="back">
       <packs 
         v-if="page != 'info' && page != 'account'" 
         v-bind:title="page" 
@@ -162,5 +162,8 @@ import login from './../src/components/Login'
 <style>
 #white {
   color: white !important;
+}
+#back {
+ background-color: black;
 }
 </style>

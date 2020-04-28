@@ -5,7 +5,6 @@
         <v-row
           :align="alignment"
           :justify="justify"
-          class="grey lighten-5"
         >
           <pack
             v-for="{id, name, description, type, price} in filter(title, seachstring)"
@@ -89,4 +88,3 @@ export default {
   }
 }
 </script>
-
