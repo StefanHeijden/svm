@@ -1,26 +1,23 @@
 <template>
   <!--Side Bar-->
-  <v-app id="inspire">
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
+      color="grey darken-4"
     >
-      <v-list dense>
-        <template v-for="item in items">
+      <v-list color="grey darken-3" dense>
+        <template v-for="item in items" >
           <v-list-item
             :key="item.text"
             link
             @click="page = item.click "
           >
             <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon color="white" >{{ item.icon }}</v-icon>
             </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.text }}
-              </v-list-item-title>
-            </v-list-item-content>
+            <div id="white" color="white">{{ item.text }}</div>
           </v-list-item>
         </template>
       </v-list>
@@ -161,3 +158,9 @@ import login from './../src/components/Login'
     }),
 }
 </script>
+
+<style>
+#white {
+  color: white !important;
+}
+</style>
